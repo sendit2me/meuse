@@ -14,3 +14,5 @@ test/resources/tmp
 dev/resources/config.yaml
 *.iml
 .idea/
+/mirror/crates/
+/mirror/registry/

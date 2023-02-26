@@ -1,0 +1,70 @@
+# The PostgreSQL database configuration
+database:
+  # The database user
+  user: "meuse"
+  #schema: ""
+  # The database password
+  password: !secret "meuse"
+  # The database host
+  host: "database"
+  # The database port
+  port: 5432
+  # The database name
+  name: "meuse"
+  # optional: client certificates for tls connections
+  # cacert: "/home/mathieu/Documents/meuse/ssl/ca.cer"
+  # cert: "/home/mathieu/Documents/meuse/ssl/client.cer"
+  # key: "/home/mathieu/Documents/meuse/ssl/client.key"
+  # optional: postgresql verify mode (default is "verify-full")
+  ssl-mode: "verify-ca"
+  # optional: connection pool size (default is 2)
+  max-pool-size: 3
+  # optional: the PostgreSQL schema to used
+# The HTTP server configuration
+http:
+  # the IP address of the HTTP server
+  address: 0.0.0.0
+  # the port of the HTTP server
+  port: 8855
+  # optional: server certificates for tls
+  # cacert: "/app/ssl/ca.cer"
+  # cert: "/app/ssl/client.cer"
+  # key: "/app/ssl/client.key"
+
+# The logging configuration
+# Meuse uses the unilog library for logging, you can check
+# its doc for the configuration options:
+# https://github.com/pyr/unilog/
+logging:
+  level: debug
+  console:
+    encoder: json
+  overrides:
+    org.eclipse.jetty: info
+    com.zaxxer.hikari.pool.HikariPool: info
+    org.apache.http: error
+    io.netty.buffer.PoolThreadCache: error
+    org.eclipse.jgit.internal.storage.file.FileSnapshot: info
+    com.amazonaws.auth.AWS4Signer: warn
+    com.amazonaws.retry.ClockSkewAdjuster: warn
+    com.amazonaws.request: warn
+    com.amazonaws.requestId: warn
+
+# The configuration of your Git index
+metadata:
+  type: "shell"
+  path: "/app/registry/"
+  target: "origin/master"
+  url: "https://github.com/mcorbin/testregistry/crates.io-index"
+
+# The crate binary files configuration
+crate:
+  store: filesystem
+  path: "/app/crates"
+
+
+# The frontend is currently in alpha, and is accessible on the "/front" URL.
+frontend:
+  enabled: true
+  public: true
+  secret: !secret "ozeifjrizjrjghtkzifrnbjfkzoejfjz"
