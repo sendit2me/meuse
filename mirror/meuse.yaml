@@ -53,7 +53,7 @@ logging:
 # The configuration of your Git index
 metadata:
   type: "shell"
-  path: "/app/registry/"
+  path: "/app/registry/crates.io-index/"
   target: "origin/master"
   url: "https://github.com/mcorbin/testregistry/crates.io-index"
 
