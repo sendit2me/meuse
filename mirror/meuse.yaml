@@ -53,9 +53,9 @@ logging:
 # The configuration of your Git index
 metadata:
   type: "shell"
-  path: "/app/registry/crates.io-index/"
+  path: "/app/registry"
   target: "origin/master"
-  url: "https://github.com/mcorbin/testregistry/crates.io-index"
+  url: "https://github.com/sendit2me/crates.io-index.git"
 
 # The crate binary files configuration
 crate:

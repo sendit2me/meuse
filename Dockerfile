@@ -8,8 +8,7 @@ RUN lein uberjar
 # -----------------------------------------------------------------------------
 
 from eclipse-temurin:17-focal
-
-RUN groupadd -r meuse && useradd -r -s /bin/false -g meuse meuse
+RUN groupadd --gid 200 -r meuse && useradd --uid 200 -r -s /bin/false -g meuse meuse
 RUN mkdir /app
 COPY --from=build-env /app/target/*uberjar/meuse-*-standalone.jar /app/meuse.jar
 
