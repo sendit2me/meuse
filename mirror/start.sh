@@ -6,7 +6,7 @@ cd $script_full_path
 
 docker build -t nexus_nexus .
 
-sed -e "s|CURRENTUSERID|$(id -u)|" -e "s|CURRENTUSERGID|$(id -u)|" ./Dockerfile > ./Dockerfile
+sed -e "s|CURRENTUSERID|$(id -u)|" -e "s|CURRENTUSERGID|$(id -u)|" ../Dockerfile > ../Dockerfile
 sed -e "s|CURRENTUSERID|$(id -u)|" -e "s|CURRENTUSERGID|$(id -u)|" ./docker-compose-base.yaml > ./docker-compose.yaml
 
 if [[ ! -d ./registry ]]; then
