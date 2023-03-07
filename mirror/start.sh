@@ -4,7 +4,9 @@ script_name=$0
 script_full_path=$(dirname "$0")
 cd $script_full_path
 
-docker build -t nexus_nexus .
+cd ..
+docker build -t mirror_meuse .
+cd mirror
 
 sed -e "s|CURRENTUSERID|$(id -u)|" -e "s|CURRENTUSERGID|$(id -u)|" ../Dockerfile > ../Dockerfile
 sed -e "s|CURRENTUSERID|$(id -u)|" -e "s|CURRENTUSERGID|$(id -u)|" ./docker-compose-base.yaml > ./docker-compose.yaml
