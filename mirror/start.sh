@@ -1,14 +1,13 @@
 #!/bin/bash
 
-#
+script_name=$0
+script_full_path=$(dirname "$0")
+cd $script_full_path
+
 docker build -t nexus_nexus .
 
 sed -e "s|CURRENTUSERID|$(id -u)|" -e "s|CURRENTUSERGID|$(id -u)|" ./DockerfileBase > ./Dockerfile
 sed -e "s|CURRENTUSERID|$(id -u)|" -e "s|CURRENTUSERGID|$(id -u)|" ./docker-compose-base.yaml > ./docker-compose.yaml
-
-if [[ ! -d ./nexus-data ]]; then
-    mkdir ./nexus-data
-fi
 
 if [[ ! -d ./registry ]]; then
     git clone git@github.com:sendit2me/crates.io-index.git registry
